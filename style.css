@@ -1,0 +1,192 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.bg-slide,
+.bg-slide .circle,
+.bg-slide .circle img,
+.circle-darktransp {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.bg-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bg-slide .circle {
+  pointer-events: none;
+  user-select: none;
+  overflow: hidden;
+}
+
+.bg-slide.active .circle {
+  z-index: 10;
+}
+
+.bg-slide .circle.large,
+.circle-darktransp {
+  clip-path: circle(50% at 50% 50%);
+}
+
+.bg-slide .circle.small {
+  clip-path: circle(30% at 50% 50%);
+  z-index: 12;
+}
+
+.bg-slide.active .circle.small {
+
+}
+
+.bg-slide .circle img {
+  object-fit: cover;
+  transform: rotate(0deg) scale(4);
+  opacity: 0;
+  transition: transform 1.5s cubic-bezier(0.645,0.045, 0.355, 1), opacity 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.bg-slide.active .circle img {
+  transform: rotate(360deg) scale(2);
+  opacity: 1;
+}
+
+.bg-slide.after-active .circle img {
+  transform: rotate(720deg) scale(4);
+  opacity: 0;
+}
+
+.bg-slide.active .circle.bg img, 
+.bg-slide.after-active .circle.bg img {
+  transition-delay: .9s;
+}
+
+.bg-slide.active .circle.large img, 
+.bg-slide.after-active .circle.large img {
+  transition-delay: .6s;
+}
+
+.bg-slide.active .circle.small img, 
+.bg-slide.after-active .circle.small img {
+  transition-delay: .3s;
+}
+
+.circle-darktransp {
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 11;
+}
+
+.bg-slide .content-text {
+  position: absolute;
+  z-index: 100;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.bg-slide.active .content-text{
+  z-index: 101;
+  
+}
+
+.content-text .place,
+.content-text .country {
+  overflow: hidden;
+}
+
+.content-text .country {
+}
+
+.content-text .place h1,
+.content-text .country h2 {
+  color: #fff;
+  text-transform: uppercase;
+  line-height: 1.2;
+  opacity: 0;
+  transition: transform 0.5s cubic-bezier(0.645,0.045, 0.355, 1);
+  transition-delay: 1s;
+}
+
+.content-text .place h1 {
+  font-size: 60px;
+  transform: translateY(100%);
+}
+
+.content-text .country h2 {
+  font-size: 50px;
+  transform: translateY(-100%);
+}
+
+.bg-slide.active .content-text .place h1,
+.bg-slide.active .content-text .country h2 {
+  transform: translateY(0%);
+  opacity: 1;
+
+}
+
+/*? Change translateY - UP/DOWN Transition */
+.bg-slide.after-active .content-text .place h1 {
+  transform: translateY(-100%);
+  opacity: 1;
+}
+
+.bg-slide.after-active .content-text .country h2 {
+  transform: translateY(100%);
+  opacity: 1;
+}
+
+
+.line {
+  position: absolute;
+  top: 50.5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 4px;
+  background-color: #fff;
+  z-index: 100;
+}
+
+.rotate-btn {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  top: 65%;
+  left: 46%;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rotate-btn svg {
+  width: 40px;
+  height: 40px;
+  color: #fff;
+}
